@@ -1,0 +1,61 @@
+#!/bin/sh
+
+HERE="$(dirname "$(readlink -f "${0}")")"
+
+# Allow the AppImage to be symlinked to e.g., /usr/bin/commandname
+# or called with ./Some*.AppImage commandname ...
+
+#echo "ARGV0: $ARGV0"
+#echo "0: $0"
+#set
+
+if [ ! -z $APPIMAGE ] ; then
+  BINARY_NAME=$(basename "$ARGV0")
+else
+  BINARY_NAME=$(basename "$0")
+fi
+if [ ! "x$1" = "x" ] && [ "x$1" = "xsymlink" ] ; then
+  for dirbins in bin usr/bin
+  do
+	  for fnbins in $HERE/$dirbins/*
+	  do
+		if [ -e "$fnbins" ] ; then
+			BINNAME=$(basename "$fnbins")
+			echo "Symlinking $BINNAME"
+			ln -sf "$ARGV0" "$BINNAME"
+		fi
+	  done
+  done
+  exit 0
+elif [ ! "x$1" = "x" ] && [ "x$1" = "xhelp" ] ; then
+	echo "$BINARY_NAME commands"
+	echo "help"
+	echo "symlink"
+	echo
+	for dirbins in bin usr/bin
+	do
+		for fnbins in $HERE/$dirbins/*
+		do
+			if [ -e "$fnbins" ] ; then
+				BINNAME=$(basename "$fnbins")
+				echo "$BINNAME"
+			fi
+		done
+	done
+	exit 0
+elif [ ! "x$1" = "x" ] && [ -e "$HERE/bin/$1" ] ; then
+  MAIN="$HERE/bin/$1" ; shift
+elif [ ! "x$1" = "x" ] && [ -e "$HERE/usr/bin/$1" ] ; then
+  MAIN="$HERE/usr/bin/$1" ; shift
+elif [ -e "$HERE/bin/$BINARY_NAME" ] ; then
+  MAIN="$HERE/bin/$BINARY_NAME"
+elif [ -e "$HERE/usr/bin/$BINARY_NAME" ] ; then
+  MAIN="$HERE/usr/bin/$BINARY_NAME"
+else
+  MAIN="$HERE/usr/bin/ujprog"
+fi
+
+export GHDL_PREFIX=$HERE/usr/ghdl/lib/ghdl
+
+exec "${MAIN}" "$@"
+
