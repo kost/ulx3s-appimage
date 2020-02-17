@@ -1,5 +1,5 @@
 VERSION=$(shell date '+%Y.%m.%d')
-ulx3s_url=https://github.com/alpin3/ulx3s/releases/download/v2019.12.29/ulx3s-2019.12.29-linux-x86_64.tar.gz
+ulx3s_url=https://github.com/alpin3/ulx3s/releases/download/v2020.02.11/ulx3s-2020.02.11-linux-x86_64.tar.gz
 
 untar:
 	cd ulx3s.AppDir/usr && curl -L $(ulx3s_url) | tar -xvz --strip-components=1 -f -
