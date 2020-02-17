@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2020 Vlatko Kosturjak <vlatko.kosturjak@gmail.com> -->
+<component type="desktop-application">
+  <id>org.ulx3s.toolchain</id>
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>ULX3S toolchain</name>
+  <summary>Complete open source toolchain for ULX3S FPGA board</summary>
+
+  <description>
+    <p>
+      This is complete open source toolchain for ULX3S FPGA board.
+    </p>
+    <p>Toolchain comes with:</p>
+    <ul>
+      <li>ujprog</li>
+      <li>nextpnr</li>
+      <li>yosys</li>
+      <li>project trellis</li>
+      <li>openocd</li>
+    </ul>
+    <p>
+      In short, it comes with tools to synthesize your design and to upload it to
+      the FPGA board.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">org.ulx3s.toolchain.desktop</launchable>
+
+  <url type="homepage">https://github.com/alpin3/ulx3s</url>
+
+  <provides>
+<binary>ecpbram</binary>
+<binary>ecpmulti</binary>
+<binary>ecppack</binary>
+<binary>ecppll</binary>
+<binary>ecpunpack</binary>
+<binary>FleaFPGA-JTAG</binary>
+<binary>ftx_prog</binary>
+<binary>mpy-cross</binary>
+<binary>nextpnr-ecp5</binary>
+<binary>openocd</binary>
+<binary>tinyfpgasp</binary>
+<binary>ujprog</binary>
+<binary>vhd2vl</binary>
+<binary>yosys</binary>
+<binary>yosys-abc</binary>
+<binary>yosys-config</binary>
+<binary>yosys-filterlib</binary>
+<binary>yosys-smtbmc</binary>
+  </provides>
+
+  <releases>
+    <release version="2020.02.11" date="2020-02-11">
+      <description>
+        <p>Initial original appimage release</p>
+      </description>
+    </release>
+  </releases>
+</component>
