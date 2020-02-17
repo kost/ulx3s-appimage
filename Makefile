@@ -7,6 +7,9 @@ untar:
 appimage:
 	make-static-appimage ulx3s.AppDir ulx3s-$(VERSION)-x86_64.AppImage
 
+appimageorig:
+	ARCH=x86_64 appimagetool-x86_64.AppImage ulx3s.AppDir ulx3s-toolchain-$(VERSION).AppImage
+
 dep:
 	# go get -u ./...
 	# go get
