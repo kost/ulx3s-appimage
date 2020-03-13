@@ -4,6 +4,9 @@ ulx3s_url=https://github.com/alpin3/ulx3s/releases/download/v2020.02.11/ulx3s-20
 untar:
 	cd ulx3s.AppDir/usr && curl -L $(ulx3s_url) | tar -xvz --strip-components=1 -f -
 
+untardist:
+	cd ulx3s.AppDir/usr && tar -xvz --strip-components=1 -f ../../../dist/ulx3s-*.tar.gz
+
 appimage:
 	make-static-appimage ulx3s.AppDir ulx3s-$(VERSION)-x86_64.AppImage
 
